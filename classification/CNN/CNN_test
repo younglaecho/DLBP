@@ -6,13 +6,13 @@ from tqdm import tqdm
 from CNN_train import CNN
 import numpy as np
 
-dataset = MNIST(root='./datasets', download=True, train=False, transform=ToTensor())
+dataset = MNIST(root='./datasets', download=True, train=False, transform=ToTensor()) # 데이터 정의, 0~1사이 값/파이토치가 다룰수있는 값으로
 #    PIL Image : 파이썬의 이미지 자료형
 #    -> torch.tensor : 파이토치의 자료형
-data_loader = DataLoader(dataset, batch_size=32, shuffle=False)
+data_loader = DataLoader(dataset, batch_size=32, shuffle=False) # 정의한 데이터 불러 오고
 
-model = CNN()
-weight_dict = torch.load('./weight_dict.pt')
+model = CNN() # 모델구조 가져오기
+weight_dict = torch.load('./weight_dict.pt') # 모델 웨이트 가져오기
 
 for k, _ in weight_dict.items():
     print(k)
